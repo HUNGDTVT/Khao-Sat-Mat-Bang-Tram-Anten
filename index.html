@@ -100,7 +100,7 @@
       font-family: Arial, sans-serif;
     }
 #map {
-  width: 100%;
+  width: 50%;
   height: 40vh;
   border-radius: 8px;
   border: 1px solid #ccc;
@@ -490,7 +490,7 @@
       }
 
       document.getElementById("infoUpdate").textContent = 
-        `Trạm: ${siteCode} | Tọa độ MO: ${coord.lat.toFixed(6)}, ${coord.lng.toFixed(6)} | Azimuth: ${azimuth}° | Hàng rào: ${width}x${height} m | Móng cột: ${foundationName} | Số móng co: ${guyCount} | Cao cột: ${towerHeight} m` -DoanHung-;
+        `Trạm: ${siteCode} | Tọa độ MO: ${coord.lat.toFixed(6)}, ${coord.lng.toFixed(6)} | Azimuth: ${azimuth}° | Hàng rào: ${width}x${height} m | Móng cột: ${foundationName} | Số móng co: ${guyCount} | Cao cột: ${towerHeight} m`;
     }
 
     document.getElementById("drawBtn").addEventListener("click", drawLayout);
