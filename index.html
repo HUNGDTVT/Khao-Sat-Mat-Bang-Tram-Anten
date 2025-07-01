@@ -6,156 +6,178 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     html, body {
-      height: 100%;
       margin: 0;
+      padding: 0;
       font-family: Arial, sans-serif;
       background-color: #f0f0f0;
     }
-    body {
-      display: flex;
-      flex-direction: column;
-      padding: 20px;
-      box-sizing: border-box;
-      min-height: 100vh;
-    }
+
     h1 {
       text-align: center;
-      margin-bottom: 15px;
+      margin: 16px 0 10px;
       font-weight: bold;
+      font-size: 26px;
     }
+
+    #instructionBox {
+      max-width: 960px;
+      margin: 10px auto;
+      padding: 10px 20px;
+      background-color: #cc0000; /* Red background */
+      color: white; /* White text */
+      text-align: center;
+      font-weight: bold;
+      border-radius: 8px; /* Rounded corners */
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      box-sizing: border-box;
+      font-size: 25px;
+    }
+
     #inputContainer {
-      max-width: 800px;
-      margin: 0 auto 20px auto;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 12px 20px;
       box-sizing: border-box;
     }
+
     .form-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px 30px;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px 24px;
       background-color: white;
-      padding: 15px 25px 25px 25px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.08);
     }
+
     label {
       font-weight: bold;
       display: block;
       margin-bottom: 5px;
-      font-size: 18px;
+      font-size: 16px;
     }
+
     input, select, button, textarea {
       width: 100%;
-      padding: 12px 14px;
-      font-size: 18px;
+      padding: 10px 12px;
+      font-size: 16px;
       border: 1px solid #aaa;
       border-radius: 6px;
       box-sizing: border-box;
-      resize: vertical;
       background-color: white;
-      color: black;
-      font-family: Arial, sans-serif;
       transition: border-color 0.3s ease;
     }
+
     input:focus, select:focus, textarea:focus {
       border-color: #004400;
       outline: none;
     }
+
     textarea {
+      resize: vertical;
       min-height: 48px;
     }
+
     button {
       background-color: #f0c000;
-      color: #004400;
-      border: none;
-      cursor: pointer;
+      color: #0000FF;
       font-weight: bold;
-      transition: background-color 0.3s ease, color 0.3s ease;
-      margin-top: 15px;
-      width: 220px;
-      justify-self: center;
+      border: none;
       border-radius: 8px;
-      font-size: 18px;
-      padding: 12px 0;
+      font-size: 20px;
+      padding: 10px 0;
+      cursor: pointer;
       box-shadow: 0 0 8px rgba(240,192,0,0.7);
+      transition: background-color 0.3s ease, color 0.3s ease;
+      margin-top: 12px;
     }
+
     button:hover {
       background-color: #cc0000;
       color: white;
       box-shadow: 0 0 10px rgba(204,0,0,0.8);
     }
+
+    #map {
+      width: 100%;
+      height: 85vh;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      max-width: 100%;
+      margin: 30px auto 20px auto;
+      box-shadow: 0 0 15px rgba(0,0,0,0.15);
+      background-color: white;
+    }
+
     #infoUpdate {
-      margin-top: 15px;
+      max-width: 960px;
+      margin: 0 auto 40px auto;
       font-weight: bold;
       text-align: center;
       color: #003300;
       background-color: #d3d3d3;
-      padding: 14px 20px;
+      padding: 16px;
       border-radius: 8px;
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
-      box-sizing: border-box;
+      font-size: 16px;
       box-shadow: 0 0 8px rgba(0,0,0,0.1);
-      font-size: 18px;
-      font-family: Arial, sans-serif;
+      white-space: pre-line;
     }
-#map {
-  width: 100%;
-  height: 40vh;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  max-width: 900px;
-  margin: 20px auto 0 auto;
-  box-sizing: border-box;
-  box-shadow: 0 0 15px rgba(0,0,0,0.15);
-  background-color: white;
-}
 
     @media (max-width: 700px) {
+      h1 {
+        font-size: 20px;
+        margin-top: 10px;
+      }
+
+      #instructionBox {
+        padding: 8px 15px;
+        font-size: 14px;
+      }
+
       .form-grid {
         grid-template-columns: 1fr;
-        padding: 10px 15px 15px 15px;
-        gap: 15px;
+        padding: 10px 15px;
+        gap: 12px;
       }
+
+      #inputContainer {
+        padding: 0 12px;
+      }
+
       button {
         width: 100%;
       }
-      #inputContainer {
-        padding: 0 8px;
-        margin-bottom: 15px;
-      }
+
       #map {
-        height: 90vh;
-        border-radius: 4px;
+        height: 80vh;
+        margin-top: 24px;
       }
+
       #infoUpdate {
-        font-size: 16px;
+        font-size: 14px;
         padding: 10px;
-        margin-top: 10px;
       }
     }
   </style>
 </head>
 <body>
-  <h1>Phác thảo mặt bằng trạm DoanHung</h1>
+  <h1>Phác thảo mặt bằng trạm - DoanHung</h1>
+  <div id="instructionBox">Nhập thông tin / Enter Information</div>
 
   <div id="inputContainer">
     <div class="form-grid">
       <div>
         <label for="siteCode">Mã trạm:</label>
-        <textarea id="siteCode" placeholder="Nhập mã trạm" rows="2" onfocus="clearInput(this)">MAP123</textarea>
+        <textarea id="siteCode" rows="2" onfocus="clearInput(this)">MAP123</textarea>
       </div>
-
       <div>
         <label for="moCoord">Tọa độ MO (lat, lng):</label>
-        <textarea id="moCoord" placeholder="lat, lng" rows="2" onfocus="clearInput(this)">-25.9493454, 32.5620781</textarea>
+        <textarea id="moCoord" rows="2" onfocus="clearInput(this)">-25.9493454, 32.5620781</textarea>
       </div>
-
       <div>
         <label for="azimuth">Hướng cửa trạm (Azimuth - độ):</label>
         <input id="azimuth" value="30" type="number" min="0" max="360" step="0.1" onfocus="clearInput(this)" />
       </div>
-
       <div>
         <label for="fenceSize">Kích thước hàng rào (m):</label>
         <select id="fenceSize">
@@ -166,7 +188,6 @@
           <option value="8x12">8x12</option>
         </select>
       </div>
-
       <div>
         <label for="foundationType">Loại móng cột:</label>
         <select id="foundationType">
@@ -175,7 +196,6 @@
           <option value="self30">Tự đứng 30m</option>
         </select>
       </div>
-
       <div>
         <label for="guyCount">Số móng co:</label>
         <select id="guyCount">
@@ -183,7 +203,6 @@
           <option value="4">4</option>
         </select>
       </div>
-
       <div>
         <label for="towerHeight">Độ cao cột (m):</label>
         <select id="towerHeight">
@@ -198,16 +217,13 @@
         </select>
       </div>
     </div>
-
     <button id="drawBtn">Vẽ mặt bằng</button>
-    <div id="infoUpdate">Nhập thông tin và nhấn "Vẽ mặt bằng" để cập nhật bản đồ.</div>
   </div>
 
   <div id="map"></div>
 
+  <div id="infoUpdate">Nhập thông tin và nhấn "Vẽ mặt bằng" để cập nhật bản đồ.</div>
   <script>
-    // Giữ nguyên tất cả logic gốc (copy nguyên từ bạn gửi)
-
     let map;
     let overlays = [];
 
@@ -217,12 +233,13 @@
     };
 
     function parseCoord(input) {
-      const parts = input.split(',').map(p => parseFloat(p.trim()));
-      if (parts.length !== 2 || parts.some(isNaN)) {
-        alert("Tọa độ MO không hợp lệ, vui lòng nhập theo định dạng: lat, lng");
+      // Improved regex to handle various formats like "lat,lng", "lat lng", "lat, lng"
+      const parts = input.match(/(-?\d+(\.\d+)?)\s*[, ]\s*(-?\d+(\.\d+)?)/);
+      if (!parts || parts.length < 4 || isNaN(parseFloat(parts[1])) || isNaN(parseFloat(parts[3]))) {
+        alert("Tọa độ MO không hợp lệ, vui lòng nhập theo định dạng: lat, lng (ví dụ: -25.9493454, 32.5620781)");
         throw new Error("Invalid coordinate");
       }
-      return { lat: parts[0], lng: parts[1] };
+      return { lat: parseFloat(parts[1]), lng: parseFloat(parts[3]) };
     }
 
     function moveLatLng(origin, dx, dy) {
@@ -314,7 +331,8 @@
       let coord;
       try {
         coord = parseCoord(document.getElementById("moCoord").value);
-      } catch {
+      } catch (e) {
+        console.error(e);
         return;
       }
       const azimuth = parseFloat(document.getElementById("azimuth").value);
@@ -489,8 +507,14 @@
         case "self30": foundationName = "Tự đứng 30m"; break;
       }
 
-      document.getElementById("infoUpdate").textContent = 
-        `Trạm: ${siteCode} | Tọa độ MO: ${coord.lat.toFixed(6)}, ${coord.lng.toFixed(6)} | Azimuth: ${azimuth}° | Hàng rào: ${width}x${height} m | Móng cột: ${foundationName} | Số móng co: ${guyCount} | Cao cột: ${towerHeight} m`;
+      let infoText = `DoanHung | Trạm: ${siteCode} | Tọa độ MO: ${coord.lat.toFixed(6)}, ${coord.lng.toFixed(6)}
+Azimuth: ${azimuth}° | Hàng rào: ${width}x${height} m | Móng cột: ${foundationName}`;
+
+      if (foundationType === "guyed") {
+        infoText += `\nSố móng co: ${guyCount} | Cao cột: ${towerHeight} m`;
+      }
+
+      document.getElementById("infoUpdate").textContent = infoText;
     }
 
     document.getElementById("drawBtn").addEventListener("click", drawLayout);
@@ -526,7 +550,7 @@
         });
       } catch {
         map = new google.maps.Map(document.getElementById("map"), {
-          center: { lat: -25.9493454, lng: 32.5620781 },
+          center: { lat: -25.9493454, lng: 32.5620781 }, // Default if initial parse fails
           zoom: 20,
           mapTypeId: "satellite"
         });
